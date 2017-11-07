@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DynamicTabAM"
+  Version="12.2.1.16.48"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true"
+  ComponentClass="dynamictableapp.model.service.DynamicTabAMImpl"
+  ComponentInterface="dynamictableapp.model.service.common.DynamicTabAM">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="dynamictableapp.model.service.DynamicTabAM_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="dynamic1"
+    ViewObjectName="dynamictableapp.model.view.dynamicVO"/>
+  <ViewUsage
+    Name="ListOfTablesVO"
+    ViewObjectName="dynamictableapp.model.view.ListOfTablesVO"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="createNewViewObject"
+      MethodName="createNewViewObject">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+      <Parameter
+        Name="query"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dynamictableapp.model.ModelBundle"/>
+  </ResourceBundle>
+</AppModule>

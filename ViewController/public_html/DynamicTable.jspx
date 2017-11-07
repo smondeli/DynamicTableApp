@@ -1,0 +1,95 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+        <af:document title="DynamicTable.jspx" id="d1">
+            <af:messages id="m1"/>
+            <af:form id="f1">
+                <af:panelStretchLayout id="psl1" topHeight="auto">
+                    <f:facet name="start"/>
+                    <f:facet name="end"/>
+                    <f:facet name="top">
+                        <af:panelFormLayout id="pfl1">
+                            <af:inputText label="SQL Query" id="it1" rows="4"
+                                          contentStyle="width:900px;font-weight:bold;color:navy;"
+                                          styleClass="AFStretchWidth"
+                                          binding="#{pageFlowScope.DynamicTableBean.sqlQueryBind}"/>
+                            <af:button text="Execute Query" id="b1"
+                                       actionListener="#{pageFlowScope.DynamicTableBean.createViewObjectAction}"
+                                       inlineStyle="font-weight:bold;"/>
+                        </af:panelFormLayout>
+                    </f:facet>
+                    <f:facet name="bottom"/>
+                    <f:facet name="center">
+                        <af:panelSplitter id="ps1" collapsed="true">
+                            <f:facet name="first">
+                                <af:panelBox text="List of Tables" id="pb1" showDisclosure="false" >
+                                    <f:facet name="toolbar"/>
+                                    <af:table value="#{bindings.ListOfTablesVO.collectionModel}" var="row"
+                                              rows="#{bindings.ListOfTablesVO.rangeSize}"
+                                              emptyText="#{bindings.ListOfTablesVO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                              rowBandingInterval="0"
+                                              autoHeightRows="-1"
+                                              styleClass="AFStretchWidth"
+                                              selectedRowKeys="#{bindings.ListOfTablesVO.collectionModel.selectedRow}"
+                                              selectionListener="#{bindings.ListOfTablesVO.collectionModel.makeCurrent}"
+                                              rowSelection="single" fetchSize="#{bindings.ListOfTablesVO.rangeSize}"
+                                              filterModel="#{bindings.ListOfTablesVOQuery.queryDescriptor}"
+                                              filterVisible="true"
+                                              queryListener="#{bindings.ListOfTablesVOQuery.processQuery}"
+                                              varStatus="vs" id="t2" columnStretching="last">
+                                        <af:column sortProperty="#{bindings.ListOfTablesVO.hints.ObjectName.name}"
+                                                   filterable="true" sortable="true"
+                                                   headerText="#{bindings.ListOfTablesVO.hints.ObjectName.label}"
+                                                   id="c2">
+                                            <af:outputText value="#{row.ObjectName}"
+                                                           shortDesc="#{bindings.ListOfTablesVO.hints.ObjectName.tooltip}"
+                                                           id="ot1"/>
+                                        </af:column>
+                                    </af:table>
+                                </af:panelBox>
+                            </f:facet>
+                            <f:facet name="second">
+                                <af:panelBox text="Query Result" id="pb2" showDisclosure="false">
+                                    <f:facet name="toolbar"/>
+                                    <af:panelCollection id="pc1" featuresOff="viewMenu" inlineStyle="height:500px" styleClass="AFStretchWidth">
+                                        <f:facet name="menus">
+                                            <af:menu text="Action" id="m2">
+                                                <af:commandMenuItem text="Export" id="cmi1">
+                                                    <af:exportCollectionActionListener exportedId="t1"
+                                                                                       filename="xref.xls"
+                                                                                       type="excelHTML"/>
+                                                </af:commandMenuItem>
+                                            </af:menu>
+                                        </f:facet>
+                                        <f:facet name="toolbar"/>
+                                        <f:facet name="statusbar"/>
+                                        <af:table value="#{bindings.dynamic11.collectionModel}" var="row"
+                                                  rows="#{bindings.dynamic11.rangeSize}"
+                                                  emptyText="#{bindings.dynamic11.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                  rowBandingInterval="1"
+                                                  selectedRowKeys="#{bindings.dynamic11.collectionModel.selectedRow}"
+                                                  selectionListener="#{bindings.dynamic11.collectionModel.makeCurrent}"
+                                                  rowSelection="single" fetchSize="#{bindings.dynamic11.rangeSize}"
+                                                  id="t1" autoHeightRows="-1"
+                                                  styleClass="AFStretchWidth" >
+                                            <af:iterator id="i2"
+                                                         value="#{bindings.dynamic11.attributesModel.attributes}"
+                                                         var="column" rows="0">
+                                                <af:column headerText="#{column.label}" id="c1">
+                                                    <af:dynamicComponent id="d3" attributeModel="#{column}"
+                                                                         value="#{row.bindings[column.name].inputValue}"/>
+                                                </af:column>
+                                            </af:iterator>
+                                        </af:table>
+                                    </af:panelCollection>
+                                </af:panelBox>
+                            </f:facet>
+                        </af:panelSplitter>
+                    </f:facet>
+                </af:panelStretchLayout>
+            </af:form>
+        </af:document>
+    </f:view>
+</jsp:root>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.36" id="DynamicTablePageDef"
+                Package="dynamictableapp.view.pageDefs">
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <iterator Binds="dynamic1" RangeSize="25" DataControl="DynamicTabAMDataControl" id="dynamic1Iterator"/>
+        <iterator Binds="ListOfTablesVO" RangeSize="25" DataControl="DynamicTabAMDataControl"
+                  id="ListOfTablesVOIterator"/>
+        <searchRegion Binds="ListOfTablesVOIterator" Criteria=""
+                      Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="ListOfTablesVOQuery"/>
+    </executables>
+    <bindings>
+        <methodAction id="createNewViewObject" RequiresUpdateModel="true" Action="invokeMethod"
+                      MethodName="createNewViewObject" IsViewObjectMethod="false" DataControl="DynamicTabAMDataControl"
+                      InstanceName="data.DynamicTabAMDataControl.dataProvider"
+                      ReturnName="data.DynamicTabAMDataControl.methodResults.createNewViewObject_DynamicTabAMDataControl_dataProvider_createNewViewObject_result">
+            <NamedData NDName="query" NDType="java.lang.String"/>
+        </methodAction>
+        <tree IterBinding="dynamic1Iterator" id="dynamic11">
+            <nodeDefinition Name="dynamic110">
+               
+            </nodeDefinition>
+        </tree>
+        <tree IterBinding="ListOfTablesVOIterator" id="ListOfTablesVO">
+            <nodeDefinition DefName="dynamictableapp.model.view.ListOfTablesVO" Name="ListOfTablesVO0">
+                <AttrNames>
+                    <Item Value="ObjectName"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+    </bindings>
+</pageDefinition>

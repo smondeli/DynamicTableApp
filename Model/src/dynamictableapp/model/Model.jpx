@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE JboProject SYSTEM "jbo_03_01.dtd">
+<!---->
+<JboProject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Model"
+  Version="12.1.3.2.36"
+  SeparateXMLFiles="true"
+  PackageName="dynamictableapp.model">
+  <DesignTime>
+    <Attr Name="_jprName" Value="../../../Model.jpr"/>
+    <Attr Name="_jbo.TypeMapEntries" Value="OracleApps"/>
+    <Attr Name="_NamedConnection" Value="HrCon"/>
+    <Attr Name="_appModuleNames0" Value="dynamictableapp.model.service.DynamicTabAM"/>
+  </DesignTime>
+  <Containee
+    Name="service"
+    PackageName="dynamictableapp.model.service"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_AM" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="view"
+    PackageName="dynamictableapp.model.view"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+</JboProject>

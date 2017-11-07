@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="dynamictableapp.model.service.DynamicTabAM">
+      <AppModuleConfig name="15AAEA12709" JDBCName="HrCon" DeployPlatform="LOCAL" jbo.project="dynamictableapp.model.Model" IsLazyLoadingTrue="true" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" BC4JConfigName="DynamicTabAMLocal" ApplicationName="dynamictableapp.model.service.DynamicTabAM" DBconnection="java:comp/env/jdbc/HrConDS">
+         <Database jbo.locking.mode="optimistic" jbo.TypeMapEntries="OracleApps" JDBCDataSource="java:comp/env/jdbc/HrConDS" jbo.SQLBuilder="Oracle"/>
+         <Security AppModuleJndiName="dynamictableapp.model.service.DynamicTabAM"/>
+         <Tester FullProxyInterfaceName="dynamictableapp.model.service.common.DynamicTabAM"/>
+         <Custom ns0:_testers_credentials_needed="false" ns0:ns0="http://xmlns.oracle.com/bc4j/configuration" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>
